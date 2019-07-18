@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>'this' Keyword</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>'this' Keyword</h1>
+        </header>
+
+        <div class="intro">
+            <p>
+                The 'this' keyword is considered to be tricky for
+                newbie developers (like me) to understand. I've made
+                this post to help explain it.
+            </p>
+        </div>
+        
+        <div class="text">
+            <p>
+                Try the code snippet examples yourself and console.log
+                the key points to see what 'this' is in each scenario.
+            </p>
+        </div>
+        
+        <div class="method">
+            <div class="example">
+                <h3>Example 1 - 'this' in a Method</h3>
+            </div>
+            <div class="text">
+                <p>
+                    So let's look at some code. I've made an object
+                    with some information.
+                </p>
+            </div>
+            <pre>
+                <code>
+                    var me = {
+                        firstName: "Matt",
+                        lastName: "Hey",
+                        age: 24,
+                        whatIsThis: function() {
+                            return this;
+                        }
+                    };
+                </code>
+            </pre>
+            <div class="text">
+                <p>
+                    What will the function 'whatIsThis' return? We are
+                    returning this from inside a method. In case you
+                    aren't aware of what a method is - a method is a
+                    function that is declared inside an object. In
+                    this example, the object is 'me'. Easy!
+                </p>
+                <p>
+                    So when we run 'whatIsThis', 'this' is returned. Let's
+                    look at what we get.
+                </p>
+            </div>
+            <pre>
+                <code>
+                    <div id="methodAns"></div>
+                </code>
+            </pre>
+            <div class="text">
+                <p>
+                    This is what 'this' equals inside a method. The result
+                    displays the type of data (the lower case 'object') and
+                    what the data is - an object (the upper case 'Object').
+                </p>
+            </div>            
+        </div>
+
+        <div class="window">
+            <div class="example">
+                <h3>Example 2 - 'this' by itself</h3>
+            </div>
+            <div class="text">
+                <p>
+                    So what happens if 'this' is just returned all by itself?
+                </p>
+            </div>
+            <pre>
+                <code>
+                    var a = this;
+                </code>
+            </pre>
+            <div class="text">
+                <p>
+                    Now, we check what 'this' is...
+                </p>
+            </div> 
+            <pre>
+                <code>
+                    <div id="windowAns"></div>
+                </code>
+            </pre>
+            <div class="text">
+                <p>
+                    Okay! Similar to the previous example, we receive
+                    two pieces of information, one of which is the lower
+                    case 'object' that we also saw last time.
+                </p>
+                <p>
+                    Additionally, we also receive a new piece of information
+                    in the form of 'Window'. The 'Window' refers to the browser
+                    window that you are viewer this page on. The 'Window'
+                    is known as the Global object. Simple enough, right?
+                </p>
+                <p>
+                    So when 'this' is inside a method it is an 'Object', and if
+                    it is alone it is a 'Window'.
+                </p>
+            </div>
+        </div>
+
+        <div class="function">
+            <div class="example">
+                <h3>Example 3 - 'this' in a Lone Function</h3>
+            </div>
+            <div class="text">
+                <p>
+                    As discussed earlier, a method is a function inside of an
+                    object. Now we'll take a look at what 'this' refers to when
+                    it is simply inside a lone function.
+                </p>
+            </div>
+            <pre>
+                <code>
+                    function hello() {
+                        return this;
+                    };
+                </code>
+            </pre>
+            <div class="text">
+                <p>
+                    In this case, 'this' is returned as:
+                </p>
+            </div>
+            <pre>
+                <code>
+                    <div id="functionAns"></div>
+                </code>
+            </pre>
+            <div class="text">
+                <p>
+                    You probably weren't expecting that one, but yes. It's right.
+                    'this' in a lone function refers to the Global object, the 'Window'.
+                    This happens because the function was executed whilst being in
+                    the global space. If it were not in the global space, then it would
+                    be a method and we would have the exact same situation as
+                    in Example 1.
+                </p>
+                <p>
+                    You've probably got a good grasp on how 'this' works now.
+                    Let's test what you've learned in a short quiz. Try to answer
+                    what 'this' is equal to in each case, then hover over the answer
+                    box to see if you were correct.
+                </p>
+            </div>
+        </div>
+
+        <div class="quiz">
+            <div class="question">
+                <h3>Question 1</h3>
+            </div>
+            <pre>
+                <code>
+                    var mike = {
+                        currentYear: 2019,
+                        job: 'teacher',
+                        age: 30,
+                        dob: function() {
+                            currentYear - age;
+                            return this;
+                        }
+                    };
+                </code>
+            </pre>
+            <div class="text">
+                <p>Hover over the box below for answer.</p>
+            </div>
+            <div class="qAnsBox">
+                <div class="qAns">
+                    <div id="q1Ans"></div>
+                </div>
+            </div>
+            
+
+            <div class="question">
+                    <h3>Question 2</h3>
+                </div>
+                <pre>
+                    <code>
+                    function add() {
+                        var i = 0;
+                        function plus() {
+                            i += 1;
+                        }
+                        plus();  
+                        return this;
+                    }
+                    add();
+                    </code>
+                </pre>
+                <div class="text">
+                    <p>Hover over the box below for answer.</p>
+                </div>
+                <div class="qAnsBox">
+                    <div class="qAns">
+                        <div id="q2Ans"></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                        <h3>Question 3</h3>
+                    </div>
+                    <pre>
+                        <code>
+                    function add2(number) {
+                        return number + 2;
+                    };
+                    add2(3);
+                    var john = this;
+                    var mike = {
+                        job: 'driver',
+                        age: 99
+                    };
+                        </code>
+                    </pre>
+                    <div class="text">
+                        <p>Hover over the box below for answer.</p>
+                    </div>
+                    <div class="qAnsBox">
+                        <div class="qAns">
+                            <div id="q3Ans"></div>
+                        </div>
+                    </div>
+        </div>
+
+        <h3>And you're done!</h3>
+        <div class="text">
+            <p>
+                Hopefully you now have a better understanding of what 'this'
+                is and how it works. Good luck on your dev journey!
+            </p>
+        </div>
+
+
+        <script src="app.js" async defer></script>
+    </body>
+</html>
